@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b931b2-f8a2-4546-af99-1df1f0f211cc" name="Changes" comment="Factory gibt jetzt translator zurück">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung1/view/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung1/view/Client.java" afterDir="false" />
-    </list>
+    <list default="true" id="11b931b2-f8a2-4546-af99-1df1f0f211cc" name="Changes" comment="tests hinzugefügt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +86,21 @@
       <option name="project" value="LOCAL" />
       <updated>1728308429106</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="client mit methoden">
+      <created>1728309489050</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728309489050</updated>
+    </task>
+    <task id="LOCAL-00005" summary="tests hinzugefügt">
+      <created>1728309764043</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728309764043</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +132,8 @@
     <MESSAGE value="hinzufügen von Factory Class" />
     <MESSAGE value="translateNumber gibt nun die deutsche Übersetzung der zahlen 1 bis 10 zurück" />
     <MESSAGE value="Factory gibt jetzt translator zurück" />
-    <option name="LAST_COMMIT_MESSAGE" value="Factory gibt jetzt translator zurück" />
+    <MESSAGE value="client mit methoden" />
+    <MESSAGE value="tests hinzugefügt" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests hinzugefügt" />
   </component>
 </project>
