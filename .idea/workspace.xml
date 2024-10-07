@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b931b2-f8a2-4546-af99-1df1f0f211cc" name="Changes" comment="hinzufügen von Factory Class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung1/control/GermanTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung1/control/GermanTranslator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung1/view/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung1/view/Client.java" afterDir="false" />
-    </list>
+    <list default="true" id="11b931b2-f8a2-4546-af99-1df1f0f211cc" name="Changes" comment="translateNumber gibt nun die deutsche Übersetzung der zahlen 1 bis 10 zurück" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +72,14 @@
       <option name="project" value="LOCAL" />
       <updated>1728306855948</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="translateNumber gibt nun die deutsche Übersetzung der zahlen 1 bis 10 zurück">
+      <created>1728307919396</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1728307919396</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +109,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hinzufügen von Factory Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="hinzufügen von Factory Class" />
+    <MESSAGE value="translateNumber gibt nun die deutsche Übersetzung der zahlen 1 bis 10 zurück" />
+    <option name="LAST_COMMIT_MESSAGE" value="translateNumber gibt nun die deutsche Übersetzung der zahlen 1 bis 10 zurück" />
   </component>
 </project>
