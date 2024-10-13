@@ -1,3 +1,28 @@
+## Übung 1 - beantwortete Fragen
+
+### Was ist der Vorteil einer separaten Test-Klasse?
+- Trennung zwischen Testcode und Produktivcode
+- Bessere Wartbarkeit und Wiederverwendbarkeit von Testfällen
+
+
+### Was ist bei einem Blackbox-Test der Sinn von Äquivalenzklassen?
+- um verschiedene Gruppen von Eingabewerten zu testen, die ein ähnliches Verhalten aufweisen, mit so wenig Testfällen wie nötig, aber mit guter Abdeckung
+
+
+### Warum ist ein Blackbox-Test mit JUnit auf der Klasse Client nicht unmittelbar durchführbar?
+- Client ruft nur die Methoden eines Translators auf und hat keine eigentliche Funktionalität allein
+- Der Blackbox-Test testet das externe Verhalten einer Methode, aber im Client wird nur die Darstellung über die Konsole gesteuert
+
+
+
+
+
+
+
+
+
+
+
 ## GitHub-Seite der Veranstaltung SE-1 (Code-Repository)
 
 Auf dieser GitHub-Seite finden sie die Source-Codes aus den Übungen sowie Demo-Codes aus den Vorlesungen. Sie finden hier zudem einige nützliche Links für die Übungen.
