@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b931b2-f8a2-4546-af99-1df1f0f211cc" name="Changes" comment="commit this">
+    <list default="true" id="11b931b2-f8a2-4546-af99-1df1f0f211cc" name="Changes" comment="concrete member">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung2/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung2/Container.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung3/persistence/PersistenceStrategyStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung3/persistence/PersistenceStrategyStream.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +146,21 @@
       <option name="project" value="LOCAL" />
       <updated>1729513839038</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="container new">
+      <created>1729519013425</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1729519013425</updated>
+    </task>
+    <task id="LOCAL-00013" summary="concrete member">
+      <created>1729519183240</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1729519183240</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +227,8 @@
     <MESSAGE value="ConcreteMember Class" />
     <MESSAGE value="test class" />
     <MESSAGE value="commit this" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit this" />
+    <MESSAGE value="container new" />
+    <MESSAGE value="concrete member" />
+    <option name="LAST_COMMIT_MESSAGE" value="concrete member" />
   </component>
 </project>
