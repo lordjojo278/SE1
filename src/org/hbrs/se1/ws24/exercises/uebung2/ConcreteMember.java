@@ -1,5 +1,7 @@
 package org.hbrs.se1.ws24.exercises.uebung2;
 
+import java.util.List;
+
 public class ConcreteMember implements Member {
     private Integer id;
 
@@ -18,6 +20,14 @@ public class ConcreteMember implements Member {
     @Override
     public String toString() {
         return "Member (ID = " + id + ")";
+    }
+
+    // Methode zur Ausgabe der Member-Objekte
+    public void dump(List<Member> members) {
+        System.out.println("Ausgabe aller Member-Objekte:");
+        for (Member member : members) {
+            System.out.println(member.toString());
+        }
     }
 }
 
