@@ -8,6 +8,11 @@ package org.hbrs.se1.ws24.exercises.uebung4.prototype;
         double prio = 0.0;
         String project;
 
+        // Neue Attribute für die Prioritätsberechnung
+        int value;
+        int risk;
+        int urgency;
+
         public String getProject() {
             return project;
         }
@@ -16,13 +21,21 @@ package org.hbrs.se1.ws24.exercises.uebung4.prototype;
             this.project = project;
         }
 
+        // Konstruktor mit allen Attributen für die Prioritätsberechnung
+        public UserStory(int id, String titel, String project, int value, int risk, int urgency) {
+            this.id = id;
+            this.titel = titel;
+            this.project = project;
+            this.value = value;
+            this.risk = risk;
+            this.urgency = urgency;
+            calculatePriority(); // Berechnung der Priorität bei der Erstellung
+        }
+
         public UserStory(int id, String titel, double prio) {
             this.id = id;
             this.titel = titel;
             this.prio = prio;
-        }
-
-        public UserStory() {
         }
 
         public double getPrio() {
@@ -49,6 +62,54 @@ package org.hbrs.se1.ws24.exercises.uebung4.prototype;
             this.id = id;
         }
 
+        // Getter und Setter für die neuen Attribute
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+            calculatePriority(); // Aktualisiert die Priorität
+        }
+
+        public int getRisk() {
+            return risk;
+        }
+
+        public void setRisk(int risk) {
+            this.risk = risk;
+            calculatePriority(); // Aktualisiert die Priorität
+        }
+
+        public int getUrgency() {
+            return urgency;
+        }
+
+        public void setUrgency(int urgency) {
+            this.urgency = urgency;
+            calculatePriority(); // Aktualisiert die Priorität
+        }
+
+        // Methode zur Berechnung der Priorität basierend auf Wert, Risiko und Dringlichkeit
+        public void calculatePriority() {
+            this.prio = value * risk * urgency;
+        }
+
+        // Methode zur Prioritätsabfrage
+        public double getPriority() {
+            return this.prio;
+        }
+
+        // Überschreibe toString für eine sinnvolle Ausgabe
+        @Override
+        public String toString() {
+            return "UserStory{" +
+                    "id=" + id +
+                    ", titel='" + titel + '\'' +
+                    ", priority=" + prio +
+                    ", project='" + project + '\'' +
+                    '}';
+        }
     }
 
 

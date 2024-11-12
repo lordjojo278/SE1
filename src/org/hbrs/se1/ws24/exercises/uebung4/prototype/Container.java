@@ -1,13 +1,11 @@
 package org.hbrs.se1.ws24.exercises.uebung4.prototype;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /*
- * Klasse zum Management sowie zur Eingabe unnd Ausgabe von User-Stories.
+ * Klasse zum Management sowie zur Eingabe und Ausgabe von User-Stories.
  * Die Anwendung wird über dies Klasse auch gestartet (main-Methode hier vorhanden)
  *
  * erstellt von Julius P., H-BRS 2024, Version 1.1
@@ -17,27 +15,28 @@ import java.util.Scanner;
  * - Anpassen des Generic in der List-Klasse (VORHER: Member, NEU: UserStory)
  * - Anpassen der Methodennamen
  *
- * ToDo: Wie bewerten Sie diese Strategie? Was ist ihre Strategie zur Wiederverwendung? (F1)
+ * ToDo: Wie bewerten Sie diese Strategie? -> effizient
+ *  Was ist ihre Strategie zur Wiederverwendung? (F1) -> Aufteilung der Verantwortlichkeiten in separate Klassen und Nutzung von generischen Typen in Container
  *
  * Entwurfsentscheidung: Die wichtigsten Zuständigkeiten (responsibilities)
  * sind in einer Klasse, d.h. Container?
- * ToDo: Wie bewerten Sie diese Entscheidung? Was wäre ein sinnvolle Aufteilung (F2, F6)
- * 
+ * ToDo: Wie bewerten Sie diese Entscheidung? -> alles in einer Klasse hier beeinträchtigt die Lesbarkeit + spätere Wartung
+ *  Was wäre ein sinnvolle Aufteilung (F2, F6) -> z.B. separate Klassen für Eingabe, Ausgabe und Datenverwaltung
+ *
  */
 
 public class Container {
-	 
+
 	// Interne ArrayList zur Abspeicherung der Objekte vom Type UserStory
-	private List<UserStory> liste = null;
-	
+	private List<UserStory> liste = new ArrayList<>();
+
 	// Statische Klassen-Variable, um die Referenz
 	// auf das einzige Container-Objekt abzuspeichern
 	// Diese Variante sei thread-safe, so hat Hr. P. es gehört... stimmt das?
 	// Todo: Bewertung Thread-Safeness (F1)
 	// Todo: Bewertung Speicherbedarf (F1)
-	private static Container instance = new Container();
-	
-	// URL der Datei, in der die Objekte gespeichert werden 
+	private static final Container instance = new Container();
+	// URL der Datei, in der die Objekte gespeichert werden
 	final static String LOCATION = "allStories.ser";
 
 	/**
@@ -47,25 +46,25 @@ public class Container {
 	public static Container getInstance() {
 		return instance;
 	}
-	
+
 	/**
 	 * Vorschriftsmäßiges Ueberschreiben des Konstruktors (private) gemaess Singleton-Pattern (oder?)
 	 * Nun auf private gesetzt! Vorher ohne Access Qualifier (--> dann package-private)
 	 */
 	public Container(){
-		liste = new ArrayList<UserStory>();
+		liste = new ArrayList<>();
 	}
-	
+
 	/**
-	 * Start-Methoden zum Starten des Programms 
+	 * Start-Methoden zum Starten des Programms
 	 * (hier koennen ggf. weitere Initialisierungsarbeiten gemacht werden spaeter)
 	 */
 	public static void main (String[] args) throws Exception {
-		// ToDo: Bewertung Exception-Handling (F3, F7)
+		// ToDo: Bewertung Exception-Handling (F3, F7) -> ist recht einfach; jedoch besser verständliche/spezifischere Fehlermeldungen/protokollierung wären sinnvoll
 		Container con = Container.getInstance();
-		con.startEingabe(); 
+		con.startEingabe();
 	}
-	
+
 	/*
 	 * Diese Methode realisiert eine Eingabe ueber einen Scanner
 	 * Alle Exceptions werden an den aufrufenden Context (hier: main) weitergegeben (throws)
@@ -73,7 +72,7 @@ public class Container {
 	 */
 	public void startEingabe() throws ContainerException, Exception {
 		String strInput = null;
-		
+
 		// Initialisierung des Eingabe-View
 		// ToDo: Funktionsweise des Scanners erklären (F3)
 		Scanner scanner = new Scanner( System.in );
@@ -84,30 +83,38 @@ public class Container {
 
 			System.out.print( "> "  );
 			strInput = scanner.nextLine();
-		
+
 			// Extrahiert ein Array aus der Eingabe
 			String[] strings = strInput.split(" ");
 
-			// 	Falls 'help' eingegeben wurde, werden alle Befehle ausgedruckt
-			if ( strings[0].equals("help") ) {
-				System.out.println("Folgende Befehle stehen zur Verfuegung: help, dump....");
-			}
-			// Auswahl der bisher implementierten Befehle:
-			if ( strings[0].equals("dump") ) {
-				startAusgabe();
-			}
-			// Auswahl der bisher implementierten Befehle:
-			if ( strings[0].equals("enter") ) {
-				// Daten einlesen ... (Ihre Aufgabe!)
-				// this.addUserStory( new UserStory( data ) ) um das Objekt in die Liste einzufügen.
-			}
-								
-			if (  strings[0].equals("store")  ) {
-				// Beispiel-Code zum Anlegen und Speichern einer UserStory:
-				UserStory userStory = new UserStory();
-				userStory.setId( 22 );
-				this.addUserStory( userStory );
-				this.store();
+			switch (strings[0]) {
+				case "help":
+					// 	Falls 'help' eingegeben wurde, werden alle Befehle ausgedruckt
+					System.out.println("Folgende Befehle stehen zur Verfügung: help, dump, enter, store, load, exit");
+					break;
+				case "dump":
+					// Auswahl der bisher implementierten Befehle:
+					startAusgabe();
+					break;
+				case "enter":
+					// Auswahl der bisher implementierten Befehle:
+					// Daten einlesen ... (Ihre Aufgabe!)
+					// this.addUserStory( new UserStory( data ) ) um das Objekt in die Liste einzufügen.
+					addNewUserStory(scanner);
+					break;
+				case "store":
+					store();
+					break;
+				case "load":
+					load();
+					break;
+				case "exit":
+					System.out.println("Programm wird beendet.");
+					scanner.close();
+					return;
+				default:
+					System.out.println("Unbekannter Befehl, bitte erneut versuchen!");
+					break;
 			}
 		} // Ende der Schleife
 	}
@@ -122,6 +129,10 @@ public class Container {
 
 		// [Sortierung ausgelassen]
 		// Todo: Implementierung Sortierung (F4)
+		List<UserStory> sortedList = liste.stream()
+				.filter(story -> story.getProject().equals("Coll@HBRS")) // Beispiel für Filterung nach Projekt
+				.sorted(Comparator.comparing(UserStory::getPriority).reversed()) // Priorität absteigend sortieren
+				.collect(Collectors.toList());
 
 		// Klassische Ausgabe ueber eine For-Each-Schleife
 		for (UserStory story : liste) {
@@ -132,12 +143,13 @@ public class Container {
 		//  Gerne auch mit Beachtung der neuen US1
 		//  (Filterung Projekt = "ein Wert (z.B. Coll@HBRS)" und z.B. Prio >=3
 		//  Todo: Implementierung Filterung mit Lambda (F5)
+		sortedList.forEach(story -> System.out.println(story));
 	}
 
 	/*
 	 * Methode zum Speichern der Liste. Es wird die komplette Liste
 	 * inklusive ihrer gespeicherten UserStory-Objekte gespeichert.
-	 * 
+	 *
 	 */
 	public void store() throws ContainerException {
 		ObjectOutputStream oos = null;
@@ -145,7 +157,7 @@ public class Container {
 		try {
 			fos = new FileOutputStream( Container.LOCATION );
 			oos = new ObjectOutputStream(fos);
-			
+
 			oos.writeObject( this.liste );
 			System.out.println( this.size() + " UserStory wurden erfolgreich gespeichert!");
 		}
@@ -160,7 +172,7 @@ public class Container {
 	/*
 	 * Methode zum Laden der Liste. Es wird die komplette Liste
 	 * inklusive ihrer gespeicherten UserStory-Objekte geladen.
-	 * 
+	 *
 	 */
 	public void load() {
 		ObjectInputStream ois = null;
@@ -168,7 +180,7 @@ public class Container {
 		try {
 		  fis = new FileInputStream( Container.LOCATION );
 		  ois = new ObjectInputStream(fis);
-		  
+
 		  // Auslesen der Liste
 		  Object obj = ois.readObject();
 		  if (obj instanceof List<?>) {
@@ -246,5 +258,32 @@ public class Container {
 			}
 		}
 		return null;
+	}
+
+	private void addNewUserStory(Scanner scanner) throws ContainerException {
+		System.out.print("Geben Sie die ID der User Story ein: ");
+		int id = Integer.parseInt(scanner.nextLine());
+
+		System.out.print("Geben Sie den Titel ein: ");
+		String titel = scanner.nextLine();
+
+		System.out.print("Geben Sie das Projekt ein: ");
+		String project = scanner.nextLine();
+
+		System.out.print("Geben Sie den Wert ein: ");
+		int value = Integer.parseInt(scanner.nextLine());
+
+		System.out.print("Geben Sie das Risiko ein: ");
+		int risk = Integer.parseInt(scanner.nextLine());
+
+		System.out.print("Geben Sie die Dringlichkeit ein: ");
+		int urgency = Integer.parseInt(scanner.nextLine());
+
+		// Erstelle die UserStory mit den eingegebenen Daten
+		UserStory userStory = new UserStory(id, titel, project, value, risk, urgency);
+
+		// Füge die User Story zur Liste hinzu
+		this.addUserStory(userStory);
+		System.out.println("User Story hinzugefügt: " + userStory);
 	}
 }
